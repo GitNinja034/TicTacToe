@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #548687;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+.container{
+    height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+.game{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+.box{
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+    font-size: 8vmin;
+    color: #b0413e;
+    background-color: #ffffc7;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.box:hover:not(:disabled){
+    background-color: #f7e8e8;
+    transform: scale(1.05);
+}
+.box.winning-box {
+    background-color: #4caf50;
+    color: white;
+    animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px 5px rgba(76, 175, 80, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 20px 10px rgba(76, 175, 80, 1);
+    }
+}
+#reset-btn, #new-btn {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 1rem 0.5rem;
+}
+#reset-btn:hover, #new-btn:hover {
+    background-color: #333333;
+}
+.msg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.msg-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+#msg {
+    color: #ffffc7;
+    font-size: 6vmin;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffffc7;
+    animation: fadeInDown 0.7s ease forwards;
+}
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Confetti container */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1100;
+}
